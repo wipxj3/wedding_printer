@@ -1,0 +1,114 @@
+@mixin bgI ($imgName, $size: initial, $x: center, $y: center) {
+	background-repeat: no-repeat;
+	background-position: $x $y;
+	background-size: $size;
+	background-image: url("'../img/"+$imgName+"'");
+}
+
+@mixin smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin font ($fz, $ls) {
+  letter-spacing: $ls * $fz / 1000;
+  font-size: $fz;
+}
+
+@mixin valign {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin justify-content {
+	text-align: justify;
+	&::after {
+		content: '';
+		display: inline-block;
+		width: 100%;
+	}
+}
+
+@mixin rounded($radius: 2px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
+}
+
+@mixin nobreak {
+	column-break-inside:avoid;
+	display: table;			
+}
+
+@mixin no-spacing {
+	letter-spacing: -.31em;
+	word-spacing: -.43em;
+}
+@mixin spacing {
+	letter-spacing:normal;
+	word-spacing:normal;
+}
+
+@mixin placeholder ($color: #000) {
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin decorator($color: #000) {
+  position: relative;
+  padding-bottom: 1px;
+  text-decoration: none;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 1px;
+    background-color: $color;
+    transition: width .4s;
+  }
+  &::after {
+    left: auto;
+    right: 0;
+  }
+  &:hover {
+    &::after,
+    &::before {
+      width: 0;
+    }
+  }
+}
+
+
+
+/* Clearfix
+*******************************/
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+.cf {
+    zoom:1;
+}
+.clear {
+	clear:both;
+}
